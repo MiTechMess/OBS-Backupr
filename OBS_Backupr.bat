@@ -19,11 +19,12 @@ set backup-dir=%userprofile%\Desktop
 set appdata=%appdata%
 
 
-:begin
+:main_menu
 cls
 echo ====================================================================================
 echo %script-title%
-echo - Easy OBS Backup / Restore
+echo Version: %version%
+echo Description: %description%
 echo ====================================================================================
 echo,
 echo 1) Backup OBS (Settings, Scenes, Sources, Plugins)
@@ -38,13 +39,16 @@ if "%op%"=="2" goto restore
 if "%op%"=="3" goto information
 if "%op%"=="4" goto exit
 
-
 :backup
 mkdir "%backup-dir%"
 
 cls
 echo ====================================================================================
 echo %script-title%
+echo Version: %version%
+echo Description: %description%
+echo ====================================================================================
+echo,
 echo - Backing Up OBS ... 
 echo ====================================================================================
 echo,
@@ -57,12 +61,14 @@ echo %script-title%
 echo - Backup Finished!
 echo ====================================================================================
 timeout /t 5 
-goto begin
+goto main_menu
 
 :restore
 cls
 echo ====================================================================================
 echo %script-title%
+echo Version: %version%
+echo ====================================================================================
 echo ! WARNING ! This will close OBS, Save before you continue.
 echo ====================================================================================
 echo,
@@ -74,6 +80,8 @@ if "%op%"=="n" goto exit
 cls
 echo ====================================================================================
 echo %script-title%
+echo Version: %version%
+echo ====================================================================================
 echo Closing OBS ... 
 echo, 
 echo ! NOTE ! If OBS is already closed, you will get an error. You can ignore it.
@@ -86,6 +94,7 @@ timeout /t 5
 cls
 echo ====================================================================================
 echo %script-title%
+echo Version: %version%
 echo ! Restoring OBS from backup ...
 echo ====================================================================================
 echo,
@@ -95,16 +104,19 @@ cd %appdata% && tar -m -xf "%backup-dir%\obs-studio.zip" "obs-studio"
 cls
 echo ====================================================================================
 echo %script-title%
+echo Version: %version%
 echo - Restore Finished!
 echo ====================================================================================
 timeout /t 5 
-goto begin
+goto main_menu
 
 
 :information
 cls
 echo ====================================================================================
-echo %script-title% - More Information
+echo %script-title% - MORE INFORMATION
+echo Version: %version%
+echo Description: %description%
 echo ====================================================================================
 echo,
 echo This script was made by Mitechmess.com
@@ -112,8 +124,8 @@ echo,
 echo ------------------------------------------------------------------------------------
 echo,
 set /p op=To go back type X and press enter 
-if "%op%"=="x" goto begin
-if "%op%"=="X" goto begin
+if "%op%"=="x" goto main_menu
+if "%op%"=="X" goto main_menu
 
 :exit
 exit
