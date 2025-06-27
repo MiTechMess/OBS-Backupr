@@ -1,10 +1,23 @@
+:: OBS Backupr
+:: Version: 1.1
+:: Author: MiTechMess
+:: Description: A script to backup and restore your OBS settings, scenes, sources and plugins.
+
+:: Run this script as administrator
+
 @echo off 
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 echo off
 
+:config
 title OBS Backupr
+set verion=1.0
+set author=MiTechMess
+set description=A script to backup and restore your OBS settings, scenes, sources and plugins.
 set script-title=OBS Backupr
 set backup-dir=%userprofile%\Desktop
+set appdata=%appdata%
+
 
 :begin
 cls
